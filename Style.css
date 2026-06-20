@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ku">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yosf TV</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="YosfTV">
+    <link rel="apple-touch-icon" href="logo.png">
+</head>
+<body>
+
+    <div class="app-container">
+        <div class="header">
+            <h2>Yosf TV</h2>
+        </div>
+
+        <div class="categories">
+            <div class="card news">
+                <span>🌐 کەناڵێن نووچەیان</span>
+                <small>Global & Local News</small>
+            </div>
+            <div class="card bein">
+                <span>🏆 Bein Sports</span>
+                <small>پەخشێ ڕاستەوخۆ</small>
+            </div>
+            <div class="card movies">
+                <span>🎬 فیلم و زنجیرە</span>
+                <small>Movies & Series</small>
+            </div>
+        </div>
+    </div>
+
+    <div id="ios-popup" class="ios-prompt" style="display: none;">
+        <div class="popup-content">
+            <img src="logo.png" alt="Logo" class="popup-logo">
+            <h3>دابەزاندنی ئەپلیکەیشنێ</h3>
+            <p>بۆ دانانا ئەپی ل سەر شاشا مۆبایلێ، ڤان هەردوو پێنگاڤان بکە:</p>
+            
+            <div class="step">
+                <span class="icon">📤</span>
+                <div class="text">
+                    <strong>1. کلیک ل سەر Share بکە</strong>
+                    <small>ل خوارێ ل ناڤ وێبگەڕێ Safari</small>
+                </div>
+            </div>
+            
+            <div class="step">
+                <span class="icon">➕</span>
+                <div class="text">
+                    <strong>2. Add to Home Screen هەلبژێرە</strong>
+                    <small>بۆ زێدەکرنا سەر شاشێ</small>
+                </div>
+            </div>
+            <button onclick="closePopup()" class="close-btn">باشە</button>
+        </div>
+    </div>
+
+    <script>
+        const isIos = () => {
+            const userAgent = window.navigator.userAgent.toLowerCase();
+            return /iphone|ipad|ipod/.test(userAgent);
+        }
+        const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
+
+        if (isIos() &&!isInStandaloneMode()) {
+            document.getElementById('ios-popup').style.display = 'flex';
+        }
+
+        function closePopup() {
+            document.getElementById('ios-popup').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
